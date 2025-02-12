@@ -1,2 +1,13 @@
 # PIRD_toolbox
-The toolbox realizes partial information rate decomposition (PIRD) for a network of random processes mapped by multivariate time series, for the case of one target process and two or three source processes. 
+
+Toolbox description:
+The toolbox realizes PIRD for a network of random processes mapped by multivariate time series, for the case of one target process and two or three source processes. The practical implementation is based on fitting a vector autoregressive (VAR) model on the set of (three or four) analyzed time series, and then computing spectral measures of mutual information rate (MIR) between the target and (groups of) sources from the frequency domain representation of the VAR parameters; the spectral MIR functions are then used to compute spectral redundancy rate, from which the PID principle is applied in both frequency and time domains to identify unique, redundant and synergistic rates of information shared between target and sources. In the complete implementation [Sparacino et al., 2025] (folder \full\), the VAR analysis is performed (both for the cases of two and three sources) directly in the frequency domain to obtain information decomposition at each specific frequency. In the implementation used for the letter [Faes et al., 2025] (folder \statespace\), VAR analysis is performed (only for the case of two sources) using state space models for the spectral representation and the spectral redundancy rate is integrated to get time-domain measures, so that the PIRD is executed in the time-domain only. The two implementations are compared on representative climate data in the script climate_data.mat.
+
+The “Full” framework is demonstrated in the scripts simu_freqPIRD.m and appl_climate_data.m to demonstrate the framework in simulation 3 and in the climate data application of [Sparacino et al., 2025]. 
+The “State space” framework is demonstrated in the scripts simuLETTER1.m and simuLETTER2.m to demonstrate the framework in the simulations of [Faes et al., 2025].
+
+References:
+
+[Faes et al., 2025] - L Faes, L Sparacino, G Mijatovic, Y Antonacci, L Ricci, D Marinazzo, S Stramaglia, 'Partial Information Rate Decomposition', arXiV preprint, 2025; https://arxiv.org/abs/2502.04550
+
+[Sparacino et al., 2025] - L Sparacino, G Mijatovic, Y Antonacci, L Ricci, D Marinazzo, S Stramaglia, L Faes, 'Decomposing Multivariate Information Rates in Networks of Random Processes', arXiV preprint, 2025; https://arxiv.org/abs/2502.04555
